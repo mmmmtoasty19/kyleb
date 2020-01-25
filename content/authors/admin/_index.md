@@ -11,11 +11,12 @@ education:
   - course: B.S. in Clinical Laboratory Science
     institution: Western Carolina University
     year: 2009
-email: ""
+email: "kyleb44@hotmail.com"
 interests:
 - Data Science
 - Data visualization
-- Healthcare Informatics
+- R
+- Python
 name: Kyle Belanger
 organizations:
 - name: Roche Diagnostics

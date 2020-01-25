@@ -11,8 +11,8 @@ summary: ''
 authors: []
 lastmod: '2020-01-24T18:24:53-05:00'
 featured: no
-image:
-  caption: ''
+image: 
+  caption: '[Photo by Pankaj Patel](https://unsplash.com/photos/u2Ru4QBXA5Q)'
   focal_point: ''
   preview_only: no
 projects: []
@@ -29,7 +29,7 @@ library(stringr)
 library(dplyr)</code></pre>
 <p>Import Data</p>
 <pre class="r"><code>ds &lt;- readxl::read_excel(
-    path   = &quot;Tableau 10 Training Practice Data.xlsx&quot; 
+    path   = &quot;../Tableau 10 Training Practice Data.xlsx&quot; 
     ,sheet = &quot;02 - Patient Falls-Single Hosp&quot;
     )</code></pre>
 <p>Clean Data Names</p>
@@ -57,4 +57,4 @@ names(ds) &lt;- str_replace_all(names(ds),&quot; &quot;, &quot;_&quot;)</code></
   geom_text(aes(label = format(total_patient_falls_rate, digits = 2)), nudge_y = -.25, color = &quot;white&quot;)
   
 b1</code></pre>
-<p><img src="/post/2020-01-24-my-start-to-r_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/kyleb.netlify.com/post/01-24-2020/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
