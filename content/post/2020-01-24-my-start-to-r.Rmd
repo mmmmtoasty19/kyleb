@@ -1,0 +1,83 @@
+---
+title: 'My Start to R '
+author: admin
+date: '2020-01-24'
+slug: my-start-to-r
+categories: []
+tags:
+  - R
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-01-24T18:24:53-05:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+Today starts my attempt at sharing my R journey with the world! I have been learning R off and on now since late 2019,  I have begun to take it much more serious as I work through my Data Analytics class at UCF.  My love for all things numbers and graphs has really blossomed, and I am choosing to share that love with anyone who cares to read.  I will not claim to be the best at R, or any programing for that matter, but these are my attempts.  Each post in this serious will be replicated a graph created in Tableau from the book Tableau for Healthcare.  Todays graph is a simple horizontal bar chart seen below. ![Bar Graph 5.1 ](/post/2020-01-24-my-start-to-r_files/bar-graph.PNG)
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+Load Libraries
+
+```{r}
+library(tidyr)
+library(magrittr)
+library(ggplot2)
+library(stringr)
+library(dplyr)
+```
+
+Import Data
+
+```{r}
+ds <- readxl::read_excel(
+    path   = "Tableau 10 Training Practice Data.xlsx" 
+    ,sheet = "02 - Patient Falls-Single Hosp"
+    )
+```
+Clean Data Names
+
+```{r}
+#should make reusable forumla at later time
+names(ds) <- tolower(names(ds))
+names(ds) <- str_replace_all(names(ds)," ", "_")
+
+```
+
+
+Convert Data to 'Long Form' 
+```{r}
+ds1 <- ds %>% 
+  gather("patient_falls_no_injury_rate" , "patient_falls_with_injury_rate"
+         ,key   = "injury" 
+         ,value = "rate" ) %>% 
+  mutate(injury = (injury == "patient_falls_with_injury_rate"))
+         
+```
+
+Graph 5.1
+
+```{r}
+b1 <- ds %>% 
+  ggplot(mapping = aes(x = reorder(type_of_care,total_patient_falls_rate ) , y = total_patient_falls_rate)) +
+  geom_col(fill = "#2b83ba") + 
+  coord_flip() +
+  scale_y_continuous(breaks = NULL) +
+  theme(axis.ticks = element_blank()) +
+  labs(title = "Rate of Patient Falls (per 1,000 Pateint Days)\nby Type of Care for FY2017"
+      ,x     = NULL
+      ,y     = NULL
+      ) +
+  theme_classic() +
+  geom_text(aes(label = format(total_patient_falls_rate, digits = 2)), nudge_y = -.25, color = "white")
+  
+b1
+```
