@@ -1,0 +1,4 @@
+http://kyleb.rbind.io/*  https://kyleb.rbind.io/:splat 301!
+
+http://kyleb.netlify.com/*  https://kyleb.rbind.io/:splat 301!
+https://kyleb.netlify.com/*   https://kyleb.rbind.io/:splat 301!
