@@ -39,7 +39,7 @@ Import Data
 
 ```{r}
 ds <- readxl::read_excel(
-    path   = "../Tableau 10 Training Practice Data.xlsx" 
+    path   = "../../../static/data/Tableau 10 Training Practice Data.xlsx" 
     ,sheet = "02 - Patient Falls-Single Hosp"
     )
 ```
