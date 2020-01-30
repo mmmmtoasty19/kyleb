@@ -1,0 +1,87 @@
+---
+title: Facets and a Lesson in Humility
+author: admin
+date: '2020-01-29'
+slug: 
+categories: []
+tags:
+  - R
+  - Tableau
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-01-29T20:19:42-05:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<p>Todays post is a lesson in Facets, as well as humility. The task this week was to replicate the graph in Chapter 8 of Tableau for Healthcare in R. The graph in question is called a Table Lens (This is the name the book uses, however I did have trouble finding this name in Google searches), it is a collection of charts with a common theme, this time looking at countries in various WHO regions and some statistics associated with mortality as well as health expenditure. I say this is a lesson in humiltiy as I have read through the excellent book <a href="https://r4ds.had.co.nz/">R for Data Science</a>, and yet the idea of faceting a ggplot graph slipped my mind. This ended with hours of trying to find a package in R to line up graphs, and way more time then I care to admit spent on getting things prefect. I did find such a package called cowplots, which can be found <a href="https://wilkelab.org/cowplot/index.html">here</a>. While this is an excellent package, its use was unecessary and I reverted back to using the excellent facet feature of GGplot, which can be seen below! <img src="WHO_LIFE.png" /></p>
+<div id="load-libraries" class="section level1">
+<h1>Load Libraries</h1>
+<pre class="r"><code>library(magrittr) #pipes
+library(ggplot2) #ploting 
+library(dplyr)
+library(tidyr)</code></pre>
+</div>
+<div id="import-data" class="section level1">
+<h1>Import Data</h1>
+<pre class="r"><code>ds &lt;- readxl::read_xlsx(path = &quot;../../../static/data/Tableau 10 Training Practice Data.xlsx&quot;
+                        ,sheet = &quot;03 - WHO Life Expect &amp; Mort&quot;
+                        )</code></pre>
+</div>
+<div id="clean-names-and-transform" class="section level1">
+<h1>Clean Names and Transform</h1>
+<pre class="r"><code>varnames &lt;-  c(&quot;who_region&quot;, &quot;country&quot;, &quot;year&quot; , &quot;sex&quot; , &quot;life_expect_birth&quot; , &quot;neo_mort&quot;
+               ,&quot;under_five_mort&quot; , &quot;health_expenditure&quot;)
+names(ds) &lt;- varnames
+
+# Order Countries based on Life Expectancy at Birth
+
+ds$country &lt;- factor(ds$country, levels = ds$country[order(ds$life_expect_birth)]) 
+
+#To &quot;Long&quot; Form
+
+ds1 &lt;-  ds %&gt;% pivot_longer(5:8)#select columns 5 throuh 8, leave new columns at default names
+
+# Set up labels for Facet, as well as function for Facet Labeller
+
+facet_labels &lt;-  list(
+&quot;life_expect_birth&quot;   = &quot;Life Expectancy at Birth &quot;                            
+,&quot;neo_mort&quot;           = &quot;Neonatal Mortality Rate&quot;             
+,&quot;under_five_mort&quot;    = &quot;Under-Five Mortality Rate&quot;
+,&quot;health_expenditure&quot; = &quot;Health Expenditure per Capita (US$)&quot;  )
+
+variable_labeller &lt;- function(variable,value){
+  return(facet_labels[value])
+}</code></pre>
+</div>
+<div id="graphs" class="section level1">
+<h1>Graphs</h1>
+<pre class="r"><code>hightlight_countries &lt;- (c(&quot;Mauritania&quot;, &quot;South Africa&quot;)) 
+
+g1 &lt;-  ds1 %&gt;% filter(who_region == &quot;Africa&quot;) %&gt;% 
+  mutate(name = factor(name, levels = c(&quot;life_expect_birth&quot; , &quot;neo_mort&quot;
+               ,&quot;under_five_mort&quot; , &quot;health_expenditure&quot;))
+         ,highlight = country %in% hightlight_countries) %&gt;% 
+  ggplot(aes(x = country, y = value, fill = highlight)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(
+    title = &quot;World Bank Life Expectancy, Neonatal &amp; Under-Five Mortality Rates, and Health Expenditure Analysis&quot;
+    ,x  = NULL
+    ,y = NULL
+  ) +
+  facet_grid(~name, scales = &quot;free_x&quot;,labeller = variable_labeller) +
+  theme_bw() +
+  geom_text(aes(label = round(value, 0)), hjust = 0) +
+  scale_y_continuous(expand = expand_scale(mult = c(0,0.2))) +
+  scale_fill_manual(values = c(&quot;TRUE&quot; = &quot;#fc8d59&quot;, &quot;FALSE&quot; = &quot;#2b83ba&quot;))
+g1</code></pre>
+<p><img src="/kyleb.netlify.com/post/01_29_20_Facets/index_files/figure-html/unnamed-chunk-4-1.png" width="1152" /></p>
+</div>
