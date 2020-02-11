@@ -76,7 +76,7 @@ format_names <- function(x) {
 colnames(ds) <- sapply(colnames(ds),format_names)    
 ```
 
-Now is were the fun really starts!  For this particular data set there are a couple things we need to add to replicate the example.  In the orginal data set the date is stored with month, day, and year; the day is irrelavent and we need to pull out the month as well as the year.  For this we can use the lubridate package, first we pull out the month and set it as a factor.  For this example our year actully starts in October, so we set our factor to start at October (10), and end with September (9).  We then pull out the year, which presents us with a different problem.  Again our year starts in October, instead of January. To solve this I have created a variable called date adjustment, in this column is our month is 10 or greater, we will place a 1, if not a 0.  We then set our fiscal year to be the actual year plus the date adjustment, this allows us to have our dates in the right fiscal year.  Last the precent column is currently listed as a decimal, so we will convert this to a precentage.
+Now is were the fun really starts!  For this particular data set there are a couple things we need to add to replicate the example.  In the original data set the date is stored with month, day, and year; the day is irrelevant and we need to pull out the month as well as the year.  For this we can use the lubridate package, first we pull out the month and set it as a factor.  For this example our year actually starts in October, so we set our factor to start at October (10), and end with September (9).  We then pull out the year, which presents us with a different problem.  Again our year starts in October, instead of January. To solve this I have created a variable called date adjustment, in this column is our month is 10 or greater, we will place a 1, if not a 0.  We then set our fiscal year to be the actual year plus the date adjustment, this allows us to have our dates in the right fiscal year.  Last the percent column is currently listed as a decimal, so we will convert this to a percentage.
 
 
 ``` {r}
@@ -100,7 +100,7 @@ ds1 %>% glimpse()
 
 ## GGplot
 
-The graph here is pretty straight forward with one expection, group!  For this line graph we want ggplot to connect the lines of the same year, if we do not explicilty state this using the group mapping, ggplot will try to connect all the lines together, which of course is not at all what we want!
+The graph here is pretty straight forward with one exception, group!  For this line graph we want ggplot to connect the lines of the same year, if we do not explicitly state this using the group mapping, ggplot will try to connect all the lines together, which of course is not at all what we want!
 
 ```{r}
                                   
@@ -124,7 +124,7 @@ g1
 
 ## plotly
 
-One of the nice features of Tableau is the fact the graphs are interactive, while a good graph should speak for itself, end users love pretty things.  I have been experimenting with Plotly, which has an open source package for R (as well as many other programing languages!).  This example only just scratches the surface, but there will be many more to come!
+One of the nice features of Tableau is the fact the graphs are interactive, while a good graph should speak for itself, end users love pretty things.  I have been experimenting with Plotly, which has an open source package for R (as well as many other programming languages!).  This example only just scratches the surface, but there will be many more to come!
 
 ```{r}
 
