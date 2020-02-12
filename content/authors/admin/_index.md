@@ -25,7 +25,7 @@ role: Application Specialist
 social:
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/rev_kyleb
+  link: https://twitter.com/WKyleB
 - icon: github
   icon_pack: fab
   link: https://github.com/mmmmtoasty19
