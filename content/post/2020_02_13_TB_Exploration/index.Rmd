@@ -291,3 +291,5 @@ Cases were steadily rising from 1980 to 1990, then suddenly feel off.  Starting 
 # Next Steps
 
 While no other country has the amount of cases that India does, the sudden spike in cases at adolescences asks the question do other countries follow this same trend?  We can also see the sudden spike in the 2010s, again is this just based in India or do we see this trend in other countries.  There is much more exploration we can do with this data set at a later time!
+
+

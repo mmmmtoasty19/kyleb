@@ -130,7 +130,7 @@ gdp1 &lt;- gpd_raw %&gt;%
     ) +
   theme_bw() 
 g1</code></pre>
-<p><img src="/kyleb.rbind.io/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <div id="subset" class="section level3">
 <h3>Subset</h3>
 <p>Lets subset the above data to remove some of the outliers.</p>
@@ -156,7 +156,7 @@ g1</code></pre>
   theme_bw() 
 
 g2</code></pre>
-<p><img src="/kyleb.rbind.io/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>We can see in the graph above there seems to be a small correlation between lower GDP and amount of TB cases.</p>
 </div>
 <div id="a-different-way-to-look" class="section level2">
@@ -206,7 +206,7 @@ g3 &lt;- who_combined %&gt;%
   theme_bw() 
 
  g3 </code></pre>
-<p><img src="/kyleb.rbind.io/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <div id="further-exploration" class="section level3">
 <h3>Further Exploration</h3>
 <p>Maybe we are on to something, the more people, the more likely they are to get sick! However India seems to have a very large number of cases so lets break these cases down further by age group for 2018.</p>
@@ -227,7 +227,7 @@ g3 &lt;- who_combined %&gt;%
   scale_fill_manual(labels = c(&quot;Female&quot;,&quot;Male&quot;), values = c(&quot;#e9a3c9&quot;,&quot;#67a9cf&quot;) )
   
 g4</code></pre>
-<p><img src="/kyleb.rbind.io/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>There seems to be a huge spike in cases after adolescences. Females have a sharp decline the older they get, where as male case stay elevated with a slight decrease at 55.</p>
 </div>
 </div>
@@ -249,7 +249,7 @@ g4</code></pre>
   scale_x_continuous(breaks = seq(1980,2020,5)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n=10))  #different way to add tick marks
 g5</code></pre>
-<p><img src="/kyleb.rbind.io/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/post/2020_02_13_TB_Exploration/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Cases were steadily rising from 1980 to 1990, then suddenly feel off. Starting in the early 2010s there was a sharp increase and the amount of new and relapse cases just keep growing.</p>
 </div>
 </div>
