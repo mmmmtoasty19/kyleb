@@ -9,7 +9,7 @@ title = "Kyle Belanger"
 
 # The URL of your site.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-baseurl = "kyleb.rbind.io/"
+baseurl = "https://kyleb.rbind.io/"
 
 # Enter a copyright notice to display in the site footer.
 # To display a copyright symbol, type `&copy;`. For current year, type `{year}`.
