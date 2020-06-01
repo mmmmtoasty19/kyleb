@@ -7,7 +7,7 @@ education:
   courses:
   - course: M.S. in Healthcare Informatics
     institution: University of Central Florida
-    year: 2020 (In Progress)
+    year: 2020
   - course: B.S. in Clinical Laboratory Science
     institution: Western Carolina University
     year: 2009
@@ -35,4 +35,4 @@ user_groups:
 - Visitors
 ---
 
-I am an Application Specialist at Roche Diagnostics, where I work with customers doing both training and assisting with any issues on their instruments. I have picked up a basis in both Python and R in my free time, and my love for numbers is growing.  I hope to continue to learn more and find a role as a Data Scientist!   
+I am an Application Specialist at Roche Diagnostics, where I work with customers doing both training and assisting with any issues on their instruments. I have picked up a basis in both Python and R in my free time, and my love for numbers is growing.  My goal is to keep learning and see where the numbers take me!
