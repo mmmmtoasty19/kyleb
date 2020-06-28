@@ -5,6 +5,9 @@ bio: I am an Application Specialist for Roche Diagonstics and an Aspiring Data S
   matter.
 education:
   courses:
+  - course: Doctor of Health Sciences 
+    institution: Campbell University
+    year: 2023 (In Progress)
   - course: M.S. in Healthcare Informatics
     institution: University of Central Florida
     year: 2020
