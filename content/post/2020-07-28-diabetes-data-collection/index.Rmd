@@ -170,4 +170,4 @@ View the scribe script [here](https://github.com/mmmmtoasty19/nc-diabetes-epidem
 
 ## Data Set
 
-Download the final data set [here](https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/data-public/derived/diabetes-modeling.csv.gz), please cite this post if using this data set.
+Download the final data set [here](https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/data-public/derived/diabetes-modeling.csv.gz). Note this data set has been compressed into a .gz file.  R is able to open the data set without the need to unzip it by just reading in the csv as normal, if using in another language it may be necessary to unzip the file first.  Please cite this post if using this data set for anaylsis. 
