@@ -36,10 +36,13 @@ projects: []
 <hr />
 <div id="overall" class="section level2">
 <h2>Overall</h2>
-<p>Overall there are four data sources that have have been used to create the analysis ready data for this project. There is one additional metadata file that contains the list of all county FIP codes, used for linking the various data sets. All data sets use the county FIPS as the county identifier, the county name is added at the end using the metadata. The image below shows the steps taking to achieve the analysis data set, as well as a table below showing the structure of each data set.</p>
+<p>Overall there are four data sources that have been used to create the analysis ready data for this project. There is one additional metadata file that contains the list of all county FIP codes, used for linking the various data sets. All data sets use the county FIPS as the county identifier, the county name is added at the end using the metadata. The image below shows the steps taken to achieve the analysis data set, as well as a table below showing the structure of each data set.</p>
 <p><img src="data-cleaning.png" /></p>
 <hr />
 <table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 1: </span>Data Sources
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -121,6 +124,9 @@ Raw data is one year per file
 <p>The first data set comes from the <a href="https://data.census.gov/cedsci/table?q=rural%20house&amp;hidePreview=true&amp;tid=DECENNIALSF12010.H2&amp;vintage=2010&amp;tp=true&amp;g=0100000US.050000">US Census</a>, and contains the amount of housing units inside both Urban and Rural areas. The raw data was taken and used to calculate the percentage of housing units in rural areas, as well as adding the classifications of Rural, Mostly Rural, and Mostly Urban. More about these classifications can be read <a href="https://www2.census.gov/geo/pdfs/reference/ua/Defining_Rural.pdf">here</a>. This data set is from the 2010 US Census, which is then used to set the rural classification until the next Census (2020).</p>
 <p>View greeter script <a href="https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/manipulation/publish/0-greeter-census-rural-housing.md">here</a></p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-3">Table 2: </span>Rural Housing Data Set
+</caption>
 <thead>
 <tr>
 <th style="text-align:center;">
@@ -221,6 +227,9 @@ Rural
 <p>The second data set comes from <a href="https://www.countyhealthrankings.org/">County Health Rankings</a> and contains data for the risk factors associated with diabetes, this data set is complied from many different data sources. The data was downloaded by year, and then combine to form one data set. County Health Rankings uses this data to rate health outcomes across all counties of the United States, for this analysis four categories have been extracted from the overall data set. Note that the food environment index is itself a combine measure, it is a score of both access to healthy food based on distance to grocery stores, as well as access based on cost.</p>
 <p>View greeter script <a href="https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/manipulation/publish/0-greeter-county-rankings-national.md">here</a></p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 3: </span>County Health Rankings Sources
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -296,7 +305,7 @@ USDA Food Environment Atlas, Map the Meal Gap
 <hr />
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-5">Table 1: </span>County Risk Factors Data Set
+<span id="tab:unnamed-chunk-5">Table 4: </span>County Risk Factors Data Set
 </caption>
 <thead>
 <tr>
@@ -458,10 +467,13 @@ NA
 </div>
 <div id="population-estimates" class="section level2">
 <h2>Population Estimates</h2>
-<p>The third data set also comes from the <a href="https://www.census.gov/data/tables/time-series/demo/popest/2010s-counties-detail.html">US Census</a> and contains population estimates for each county in the United States broken down by, year, age-group, sex, race, and ethnicity. For each row in the table the percent of each type of population was calculated using the yearly population total for the county. This breakdown is useful for this project as African-Americans and Hispanics suffer from diabetes at a higher rate then other groups.</p>
+<p>The third data set also comes from the <a href="https://www.census.gov/data/tables/time-series/demo/popest/2010s-counties-detail.html">US Census</a> and contains population estimates for each county in the United States broken down by: year, age-group, sex, race, and ethnicity. For each row in the table the percent of each type of population was calculated using the yearly population total for the county. This breakdown is useful for this project as African-Americans and Hispanics suffer from diabetes at a higher rate then other groups.</p>
 <p>View greeter script <a href="https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/manipulation/publish/0-greeter-us-county-population-estimates.md">here</a></p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-6">Table 5: </span>US Population Estimates Data Set
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1256,6 +1268,9 @@ Pct Hispanic Male Population
 <p>The final data set comes from the <a href="https://www.cdc.gov/diabetes/data/index.html">CDC Diabetes Atlas</a> and contains the estimated prevalence of diabetes in each county of the United States, by year. The data set also includes the upper and lower estimated limits, see the <a href="https://kyleb.rbind.io/post/2020-06-25-diabetes-1/">previous post</a> for an explanation of how these numbers are calculated. The data was downloaded by year, and then merged into one data set for the project.</p>
 <p>View greeter script <a href="https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/manipulation/publish/0-greeter-us-diabetes.md">here</a></p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-7">Table 6: </span>US Diabetes Data
+</caption>
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -1385,11 +1400,19 @@ Diabetes Upper Limit
 </div>
 <div id="analyis-data" class="section level1">
 <h1>Analyis Data</h1>
-<p>After all data has been made ready the data is joined into a final analysis ready data set. Each row of this data set represents, one county, one year, and one age group. The data is also filter to remove Alaska and Hawaii as these states could affect trends seen in the continental United States.</p>
+<p>After all data has been made ready the data is joined into a final analysis ready data set. Each row of this data set represents, one county, one year, and one age group. The data is also filtered to remove Alaska and Hawaii as these states could affect trends seen in the continental United States.</p>
 <p>View the scribe script <a href="https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/manipulation/publish/1-scribe-diabetes-data-set.md">here</a></p>
 <p><img src="data-join.png" /></p>
 <div id="data-set" class="section level2">
 <h2>Data Set</h2>
-<p>Download the final data set <a href="https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/data-public/derived/diabetes-modeling.csv.gz">here</a>. Note this data set has been compressed into a .gz file. R is able to open the data set without the need to unzip it by just reading in the csv as normal, if using in another language it may be necessary to unzip the file first. Please cite this post if using this data set for anaylsis.</p>
+<p>Download the final data set <a href="https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/data-public/derived/diabetes-modeling.csv.gz">here</a>. Note this data set has been compressed into a .gz file. R is able to open the data set without the need to unzip it by just reading in the csv as normal, if using in another language it may be necessary to unzip the file first.</p>
+</div>
+<div id="citation" class="section level2">
+<h2>Citation</h2>
+<p>Please cite this post if using this data set for analysis.</p>
+<p><strong>APA :</strong>
+Belanger, K. (2020, July 30). Diabetes in Rural North Carolina : Data Collection and Cleaning. <a href="https://kyleb.rbind.io/post/2020-07-28-diabetes-data-collection/" class="uri">https://kyleb.rbind.io/post/2020-07-28-diabetes-data-collection/</a>.</p>
+<p><strong>AMA :</strong>
+Belanger K. Diabetes in Rural North Carolina : Data Collection and Cleaning. <a href="https://kyleb.rbind.io/post/2020-07-28-diabetes-data-collection/" class="uri">https://kyleb.rbind.io/post/2020-07-28-diabetes-data-collection/</a>. Published July 30, 2020.</p>
 </div>
 </div>

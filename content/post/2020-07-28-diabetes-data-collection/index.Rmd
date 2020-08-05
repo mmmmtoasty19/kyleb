@@ -65,7 +65,7 @@ This is the second post in the series exploring Diabetes in rural North Carolina
 
 ## Overall 
 
-Overall there are four data sources that have have been used to create the analysis ready data for this project. There is one additional metadata file that contains the list of all county FIP codes, used for linking the various data sets.  All data sets use the county FIPS as the county identifier, the county name is added at the end using the metadata. The image below shows the steps taking to achieve the analysis data set, as well as a table below showing the structure of each data set.  
+Overall there are four data sources that have been used to create the analysis ready data for this project. There is one additional metadata file that contains the list of all county FIP codes, used for linking the various data sets.  All data sets use the county FIPS as the county identifier, the county name is added at the end using the metadata. The image below shows the steps taken to achieve the analysis data set, as well as a table below showing the structure of each data set.  
 
 ![](data-cleaning.png)
 
@@ -74,7 +74,7 @@ Overall there are four data sources that have have been used to create the analy
 ```{r, echo=echoChunks}
 library(magrittr)
 data_sources <- readr::read_csv("data-sources-descrip.csv")
-data_sources %>% knitr::kable() %>% kableExtra::kable_styling()
+data_sources %>% knitr::kable(caption = "Data Sources") %>% kableExtra::kable_styling()
   
 ```
 
@@ -89,7 +89,7 @@ ds_rural_housing <- readr::read_csv(
   "https://raw.githubusercontent.com/mmmmtoasty19/nc-diabetes-epidemic-2020/master/data-public/derived/percentage-rural.csv")
 
 head(ds_rural_housing) %>% janitor::clean_names(case = "title") %>% 
-  knitr::kable(align = 'c') %>% 
+  knitr::kable(align = 'c', caption = "Rural Housing Data Set") %>% 
   kableExtra::kable_styling(full_width = TRUE) %>% 
   kableExtra::footnote(general = "Displaying 6 of 3,143 rows")
 ```
@@ -102,7 +102,7 @@ View greeter script [here](https://github.com/mmmmtoasty19/nc-diabetes-epidemic-
 
 ```{r, echo=echoChunks}
 county_risk_sources <- readr::read_csv("county_health_rankings_sources.csv")
-county_risk_sources %>% knitr::kable() %>% kableExtra::kable_styling() %>% 
+county_risk_sources %>% knitr::kable(caption = "County Health Rankings Sources") %>% kableExtra::kable_styling() %>% 
   kableExtra::footnote(general = "https://www.countyhealthrankings.org/explore-health-rankings/measures-data-sources/2020-measures" , general_title = "Source: ")
 
 ```
@@ -122,7 +122,7 @@ head(ds_county_risk) %>% janitor::clean_names(case = "title") %>%
 
 ## Population Estimates
 
-The third data set also comes from the [US Census](https://www.census.gov/data/tables/time-series/demo/popest/2010s-counties-detail.html) and contains population estimates for each county in the United States broken down by, year, age-group, sex, race, and ethnicity. For each row in the table the percent of each type of population was calculated using the yearly population total for the county. This breakdown is useful for this project as African-Americans and Hispanics suffer from diabetes at a higher rate then other groups.  
+The third data set also comes from the [US Census](https://www.census.gov/data/tables/time-series/demo/popest/2010s-counties-detail.html) and contains population estimates for each county in the United States broken down by: year, age-group, sex, race, and ethnicity. For each row in the table the percent of each type of population was calculated using the yearly population total for the county. This breakdown is useful for this project as African-Americans and Hispanics suffer from diabetes at a higher rate then other groups.  
 
 View greeter script [here](https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/manipulation/publish/0-greeter-us-county-population-estimates.md)
 
@@ -134,7 +134,7 @@ ds_population <- readr::read_csv(
 
 head(ds_population) %>% janitor::clean_names(case = "title") %>% 
   # dplyr::select(1:6) %>% 
-  knitr::kable() %>% 
+  knitr::kable(caption = "US Population Estimates Data Set") %>% 
   kableExtra::kable_styling() %>% 
   kableExtra::scroll_box(width = "100%") %>% 
   kableExtra::footnote(general = "Displaying 6 of 565560 rows")
@@ -153,7 +153,7 @@ ds_diabetes <- readr::read_csv(
   )
 
 head(ds_diabetes) %>% janitor::clean_names(case = "title") %>% 
-  knitr::kable() %>% 
+  knitr::kable(caption = "US Diabetes Data") %>% 
   kableExtra::kable_styling()
 
 ```
@@ -162,7 +162,7 @@ head(ds_diabetes) %>% janitor::clean_names(case = "title") %>%
 
 # Analyis Data
 
-After all data has been made ready the data is joined into a final analysis ready data set.  Each row of this data set represents, one county, one year, and one age group. The data is also filter to remove Alaska and Hawaii as these states could affect trends seen in the continental United States.
+After all data has been made ready the data is joined into a final analysis ready data set.  Each row of this data set represents, one county, one year, and one age group. The data is also filtered to remove Alaska and Hawaii as these states could affect trends seen in the continental United States.
 
 View the scribe script [here](https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/manipulation/publish/1-scribe-diabetes-data-set.md)
 
@@ -170,4 +170,14 @@ View the scribe script [here](https://github.com/mmmmtoasty19/nc-diabetes-epidem
 
 ## Data Set
 
-Download the final data set [here](https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/data-public/derived/diabetes-modeling.csv.gz). Note this data set has been compressed into a .gz file.  R is able to open the data set without the need to unzip it by just reading in the csv as normal, if using in another language it may be necessary to unzip the file first.  Please cite this post if using this data set for anaylsis. 
+Download the final data set [here](https://github.com/mmmmtoasty19/nc-diabetes-epidemic-2020/blob/master/data-public/derived/diabetes-modeling.csv.gz). Note this data set has been compressed into a .gz file.  R is able to open the data set without the need to unzip it by just reading in the csv as normal, if using in another language it may be necessary to unzip the file first.  
+
+## Citation
+
+Please cite this post if using this data set for analysis. 
+
+**APA :** 
+Belanger, K. (2020, July 30). Diabetes in Rural North Carolina : Data Collection and Cleaning. https://kyleb.rbind.io/post/2020-07-28-diabetes-data-collection/.
+
+**AMA :**
+Belanger K. Diabetes in Rural North Carolina : Data Collection and Cleaning. https://kyleb.rbind.io/post/2020-07-28-diabetes-data-collection/. Published July 30, 2020.
